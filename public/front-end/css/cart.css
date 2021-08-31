@@ -1,9 +1,4 @@
-body {
-    background: #eee;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-}
+
 
 .clearfix {
     content: "";
@@ -69,21 +64,17 @@ a:hover {
     vertical-align: middle;
 }
 
-.container {
-    font-family: 'Open Sans', sans-serif;
-    margin: 0 auto;
-    width: 980px;
-}
 
-#cart {
+
+#cartbox {
     width: 100%;
 }
 
-#cart h1 {
+#cartbox h1 {
     font-weight: 300;
 }
 
-#cart a {
+#cartbox a {
     color: #53b5aa;
     text-decoration: none;
 
@@ -94,7 +85,7 @@ a:hover {
     transition: color .2s linear;
 }
 
-#cart a:hover {
+#cartbox a:hover {
     color: #000;
 }
 
@@ -355,10 +346,4 @@ a:hover {
     background: #3598dc;
 }
 
-.minused {
-    margin: 0 50px 0 0 !important;
-}
 
-.added {
-    margin: 0 -50px 0 0 !important;
-}

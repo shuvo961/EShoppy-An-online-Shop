@@ -118,8 +118,15 @@ class CheckoutController extends Controller
     public function emailcheck($a){
            $customer = Customer::where('email',$a)->first();
            if ($customer){
-               echo "User Already Exists";
+               echo "Already Exist";
            }
+           else{
+               echo 'Available';
+           }
+    }
+
+    public function register(){
+        return view('front-end.checkout.registration');
     }
 
 }

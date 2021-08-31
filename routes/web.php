@@ -400,6 +400,14 @@ Route::get('ajax/email/check/{id}',
 
     ]);
 
-Auth::routes();
+
+Route::get('/register',
+    [
+        'uses'=> '\App\Http\Controllers\CheckoutController@register',
+        'as'=>'register'
+
+    ]);
+
+Auth::routes(['register' => false]);
 
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');

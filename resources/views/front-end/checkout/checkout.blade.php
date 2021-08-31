@@ -1,121 +1,117 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Checkout</title>
-    <!--/tags -->
+    <title>Login V1</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
-    <!--//tags -->
-
-    <link href="{{asset('/')}}/front-end/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-
-    <link href="{{asset('/')}}/front-end/css/customer.css" rel='stylesheet' type='text/css'/>
-
-
-
-
-
-    <link href="{{asset('/')}}/front-end/css/font-awesome.css" rel="stylesheet">
-
-
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="{{asset('/')}}/images/icons/favicon.ico"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{asset('/')}}/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{asset('/')}}/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{asset('/')}}/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{asset('/')}}/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{asset('/')}}/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('/')}}/css/main.css">
+    <!--===============================================================================================-->
 </head>
+<body>
+
+<div class="limiter">
+
+    <div class="container-login100">
+
+        <div class="wrap-login100">
+            <div class="login100-pic js-tilt" data-tilt>
+                <img src="images/img-01.png" alt="IMG">
+            </div>
+
+            <form class="login100-form validate-form" method="post" action="{{route('customer-login')}}">
+                @csrf
+                     <span class="login100-form-logo">
+                         <a href="{{route('/')}}"><img width="300px" src="{{asset('/')}}/img/logo.png"></a>
+                     </span>
+                    <span class="login100-form-title-one">
+						Please login to continue Shopping
+					</span>
+					<span class="login100-form-title">
+						Customer Login
+					</span>
 
 
-  <body>
+                    <div>
 
 
-  <div class="col-md-4 logo_agile " style="margin-top: 10px ; padding-top: 10px; padding-bottom: 5px">
-      <h1><a href="{{route('/')}}"><span>E</span>lite Shoppy <i class="fa fa-shopping-bag top_logo_agile_bag" aria-hidden="true"></i></a></h1>
-  </div>
+                           <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                               <input class="input100" type="text" name="email" placeholder="Email">
+                               <span class="focus-input100"> </span>
+                               <span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+                           </div>
+                        <span ><h6 class="text-center text-danger">{{Session::get('message')}}</h6></span>
+                           <div class="wrap-input100 validate-input" data-validate = "Password is required">
+                               <input class="input100" type="password" name="password" placeholder="Password">
+                               <span class="focus-input100"></span>
+                               <span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+                           </div>
 
-      <p class="text-success" style="margin:auto ; padding-bottom: 5px" id="al">You have to login to complete your valuable order. If you are not registered please register first</p>
+                           <div class="container-login100-form-btn">
+                               <button type="submit" class="login100-form-btn">
+                                   Login
+                               </button>
+                           </div>
 
-
-  <div class="container" id="fcontainer">
-      <div class="form-container sign-up-container">
-
-          {{Form::open(['route'=>'customer-signup','method'=>'post'])}}
-
-              <h2>Create Account</h2>
-              <div class="social-container ">
-                  <a href="#" class="social"><i class="fa fa-facebook"></i></a>
-                  <a href="#" class="social"><i class="fa fa-google"></i></a>
-                  <a href="#" class="social"><i class="fa fa-twitter"></i></a>
-              </div>
-              <span>or use your email for registration</span>
-              <input class="form-control"  type="text" name="name" required placeholder="Name" />
-              <input class="form-control" id="email"  type="email" name="email" required placeholder="Email" />
-               <span class="bg-alert text-danger" id="res"></span>
-              <input class="form-control"  type="password" name="password" required placeholder="Password" />
-              <input class="form-control"  type="text" name="address" required placeholder="Address" />
-              <input class="form-control"  type="text" name="phone" required title="Phone number" placeholder="01XXX-XXXXX" />
-              <button type="submit"  id="reg">Sign Up</button>
-          {{Form::close()}}
-      </div>
-      <div class="form-container sign-in-container">
-          {{Form::open(['route'=>'customer-login','method'=>'post'])}}
-
-              <h2>Login</h2>
-              <div class="social-container">
-                  <a href="#" class="social"><i class="fa fa-facebook"></i></a>
-                  <a href="#" class="social"><i class="fa fa-google"></i></a>
-                  <a href="#" class="social"><i class="fa fa-twitter"></i></a>
-              </div>
-              <span>or use your account</span>
-              <h5 class="text-warning bg-warning">{{Session::get('message')}}</h5>
-              <input class="form-control" name="email" type="email" required placeholder="Email" />
-              <input class="form-control" name="password" type="password" required placeholder="Password" />
-              <a style="color: #FF4B2B" href="#">Forgot your password?</a>
-              <button>Sign In</button>
-          {{Form::close()}}
-      </div>
-      <div class="overlay-container">
-          <div class="overlay">
-              <div class="overlay-panel overlay-left">
-                  <h1>Welcome Back!</h1>
-                  <p>If you've already registered please login here</p>
-                  <button class="ghost" id="signIn">Login</button>
-              </div>
-              <div class="overlay-panel overlay-right">
-                  <h1>Dear, Customer!</h1>
-                  <p>If you are new please register below with your details</p>
-                  <button class="ghost" id="signUp">Register</button>
-              </div>
-          </div>
-      </div>
-  </div>
+                    </div>
 
 
-  </body>
+                <div class="text-center p-t-12">
+						<span class="txt1">
+							Forgot
+						</span>
+                    <a class="txt2" href="#">
+                        Username / Password?
+                    </a>
+                </div>
 
-
-
-    <script src="{{asset('/')}}/front-end/js/customer.js"></script>
-     <script>
-         var email_address = document.getElementById('email');
-
-         email_address.onblur = function () {
-             var email = document.getElementById('email').value;
-             var xmlHttp = new XMLHttpRequest();
-             var ServerPage = 'http://localhost/EShop/public/ajax/email/check/'+email;
-             xmlHttp.open('GET',ServerPage);
-             xmlHttp.onreadystatechange =function () {
-                 if( xmlHttp.readyState == 4 && xmlHttp.status == 200){
-                     document.getElementById('res').innerHTML= xmlHttp.responseText;
-                     var data = xmlHttp.responseText;
-                     if( xmlHttp.responseText === data ){
-                         document.getElementById('reg').disabled = true;
-                         document.getElementById('reg').style.textDecoration = 'line-through';
-                         document.getElementById('reg').style.backgroundColor = 'grey';
-
-                     }
-                 }
-             }
-             xmlHttp.send(null);
-         }
-
-     </script>
+                <div class="text-center p-t-12">
+                    <a class="txt2" href="{{route('register')}}">
+                        <span class="text-primary" style="font-size: 16px">Create your Account</span>
+                        <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 
 
+
+<!--===============================================================================================-->
+<script src="{{asset('/')}}/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+<script src="vendor/bootstrap/js/popper.js"></script>
+<script src="{{asset('/')}}/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+<script src="{{asset('/')}}/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+<script src="{{asset('/')}}/vendor/tilt/tilt.jquery.min.js"></script>
+<script >
+    $('.js-tilt').tilt({
+        scale: 1.1
+    })
+</script>
+<!--===============================================================================================-->
+<script src="{{asset('/')}}/js/main.js"></script>
+
+</body>
+</html>
